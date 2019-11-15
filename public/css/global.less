@@ -1,0 +1,434 @@
+@global_color: #e1251b;
+//全局样式
+body {
+  background-color: rgb(244, 244, 244);
+  //height: 2000px;
+}
+
+a {
+  text-decoration: none;
+}
+
+//版心
+.bx() {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+//快捷菜单部分
+#shortcut {
+  height: 32px;
+  background-color: #f9fafa;
+  border-bottom: 1px solid #e6e6e6;
+
+  .content {
+    .bx;
+    margin: 0 auto;
+    //background-color: green;
+    background-color: #f9fafa;
+    height: 32px;
+    font-size: 13px;
+    color: #999;
+
+    > ul {
+      li {
+        float: left;
+        line-height: 36px;
+        color: #999;
+
+        &.fl {
+          float: left;
+        }
+
+        &.fr {
+          float: right;
+        }
+
+        &.spacer {
+          width: 1px;
+          height: 11px;
+          //line-height: 36px;
+          background-color: #999;
+          margin: 13px 4px;
+        }
+
+        &.mobile {
+          position: relative;
+
+          &:hover .mobile_pane {
+            display: block;
+          }
+
+          .mobile_pane {
+            display: none;
+            width: 190px;
+            height: 199px;
+            background-color: white;
+            border-style: solid;
+            border-width: 0 1px 1px 1px;
+            border-color: #999;
+            border-bottom: 3px solid rgb(96, 87, 90);
+            position: absolute;
+            top: 31px;
+            right: 0;
+            z-index: 1;
+
+            &::before {
+              content: "";
+              //background-color: green;
+              width: 0;
+              height: 0;
+              border: 6px solid transparent;
+              border-bottom-color: white;
+              position: absolute;
+              top: -12px;
+              right: 18px;
+            }
+
+            .mobile_pane_1 {
+              ul {
+                li {
+                  float: left;
+                  position: relative;
+
+                  a {
+                    font-size: 12px;
+                    line-height: 17px;
+                    font-weight: bold;
+                    color: #666;
+                    position: absolute;
+                    width: 70px;
+                    top: 0;
+                    left: 5px;
+
+                  }
+
+                  p {
+                    font-size: 12px;
+                    line-height: 17px;
+                    color: red;
+                    position: absolute;
+                    width: 120px;
+                    top: 18px;
+                    left: 5px;
+                  }
+                }
+
+                .sys {
+                  width: 25px;
+                  height: 25px;
+                  //background-color: red;
+
+                  //margin-right: 2px;
+                }
+
+                #iphone {
+                  background-image: url("https://misc.360buyimg.com/mtd/pc/index/home/images/sprite_mobile@1x.png");
+                  //background-position: ;
+
+                  top: 35px;
+                  left: 5px;
+                }
+
+                #an {
+                  background-image: url("https://misc.360buyimg.com/mtd/pc/index/home/images/sprite_mobile@1x.png");
+                  background-position: 0 -26px;
+                  top: 35px;
+                  left: 10px;
+                }
+
+                #pad {
+                  background-image: url("https://misc.360buyimg.com/mtd/pc/index/home/images/sprite_mobile@1x.png");
+                  background-position: 0 -52px;
+                  top: 35px;
+                  left: 15px;
+                }
+              }
+
+              box-sizing: border-box;
+              padding: 15px 5px;
+              height: 99px;
+              border-bottom: 1px solid #999;
+
+              .code {
+                width: 70px;
+                height: 70px;
+                background-color: green;
+                //border: 1px solid #999;
+                //padding: 1px;
+                //margin-right: 2px;
+              }
+            }
+
+            .mobile_pane_2 {
+              height: 99px;
+              position: relative;
+              padding: 15px 5px;
+              border-bottom: 1px solid #999;
+              box-sizing: border-box;
+
+              .code1 {
+                width: 70px;
+                height: 70px;
+                background-color: green;
+
+                img {
+                  width: 70px;
+                  height: 70px;
+                }
+
+                //background-image: url("https://img12.360buyimg.com/img/jfs/t1/67481/15/565/28110/5cec9234E71c47244/dc4cf353fd96922e.png.webp");
+              }
+
+              .wechat {
+                position: absolute;
+                top: 5px;
+                left: 80px;
+                font-weight: bold;
+
+                &.p {
+                  width: 100px;
+
+                  height: 17px;
+                  font-size: 12px;
+                  color: red;
+
+                }
+              }
+
+              .dis {
+                position: absolute;
+                top: 35px;
+                width: 90px;
+                left: 80px;
+                line-height: 13px;
+                color: red;
+
+              }
+
+            }
+
+          }
+
+        }
+      }
+    }
+  }
+}
+
+//菜单部分
+#menu {
+  height: 50px;
+  position: relative;
+  background-color: #fff;
+  cursor: auto;
+
+  .logo {
+    height: 40px;
+    margin-left: 12px;
+
+    a {
+      display: block;
+
+      //height: 100%;
+      font-size: 0;
+      cursor: pointer;
+
+      img {
+        height: 40px;
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  > ul {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 200px;
+    li {
+      float: left;
+      margin-right: 35px;
+
+      a {
+        color: #333333;
+        font-weight: bold;
+
+        &.recommend,
+        &:hover {
+          color: @global_color;
+        }
+      }
+    }
+  }
+  .search_box {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15%;
+
+    #target {
+      padding: 5px 25px 5px 10px;
+      border: 1px solid #e6e6e7;
+      width: 170px !important;
+    }
+
+    #search {
+      position: absolute;
+      height: 25px;
+      padding: 0 6px 1px;
+      border: 1px solid transparent;
+      box-sizing: border-box;
+      background-color: #fff;
+      right: 3px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 23px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: 0;
+      }
+
+    }
+  }
+}
+
+//顶部简介部分
+#top_intro {
+  background-color: #fff;
+  height: 70px;
+
+  a {
+    img {
+      width: 420px;
+      height: 60px;
+      padding: 5px 10px;
+      display: block;
+    }
+  }
+}
+
+//分页部分
+#paging {
+  .bx;
+  background-color: #fff;
+  height: 81px;
+  text-align: center;
+
+  .content {
+    line-height: 81px;
+    font-size: 12px;
+    color: #999;
+
+    #user_page {
+      display: inline;
+      outline: 0;
+    }
+
+    #number {
+      width: 30px;
+      height: 20px;
+    }
+
+    .btn {
+      border: 1px solid #e1e1e1;
+      color: #7b7b7b;
+      border-radius: 5px;
+      box-sizing: border-box;
+      width: 20px;
+      height: 26px;
+      margin: 0 2px;
+      padding: 0;
+      line-height: 24px;
+      background: 0 0;
+      cursor: pointer;
+
+      a {
+        display: inline-block;
+        color: #7b7b7b;
+        height: 100%;
+        width: 100%;
+      }
+
+      &:hover {
+        border: 1px solid @global_color;
+        background: 0 0;
+        color: @global_color;
+
+        a {
+          color: @global_color;
+        }
+      }
+    }
+    .active{
+      border: 1px solid @global_color;
+      border-radius: 5px;
+      color: @global_color;
+    }
+
+    form {
+      #number {
+        text-align: center;
+      }
+
+      .distance {
+        margin-left: 10px;
+        width: 30px;
+      }
+    }
+  }
+}
+
+//底部
+#bottom {
+  .bx;
+  height: 120px;
+  margin-top: 30px;
+  //background-color: red;
+  position: relative;
+  border-top: 1px solid #dddd;
+
+  > ul {
+
+    width: 600px;
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+
+    li {
+      float: left;
+      margin: 0 auto;
+
+      a {
+        display: block;
+        color: #787d82;
+        font-size: 14px;
+
+        &:hover {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 45px;
+    color: #c8cdd2;
+    font-size: 12px;
+  }
+}

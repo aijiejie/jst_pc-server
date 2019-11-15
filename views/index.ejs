@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/iconfont.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>京师堂|首页</title>
+</head>
+<body>
+<!--顶部广告部分-->
+<!--<div id="top_ad">-->
+<!--    <a href="#">-->
+<!--        <div class="ad_center"></div>-->
+<!--    </a>-->
+<!--</div>-->
+
+<!--快捷菜单部分-->
+<div id="shortcut">
+    <div class="content">
+        <ul>
+            <li class="fl">欢迎来到&nbsp;&nbsp;北京联通</li>
+            <li class="spacer"></li>
+            <li>京师堂</li>
+            <li class="mobile fr">手机京师堂
+                <div class="mobile_pane">
+                    <div class="mobile_pane_1">
+                        <ul>
+                            <li><img
+                                        src="https://img12.360buyimg.com/img/jfs/t1/67481/15/565/28110/5cec9234E71c47244/dc4cf353fd96922e.png.webp"
+                                        alt="" class="code"></li>
+                            <li><a href="#">手机京师堂</a></li>
+                            <li><p>新人专享大礼包</p></li>
+                            <li class="sys" id="iphone"><a href="#">&nbsp;</a></li>
+                            <li class="sys" id="an">&nbsp;</li>
+                            <li class="sys" id="pad">&nbsp;</li>
+                        </ul>
+                    </div>
+                    <div class="mobile_pane_2">
+                        <div class="code1"><img
+                                    src="https://img12.360buyimg.com/img/jfs/t1/65354/19/579/11346/5cec9240E3d8146ad/cf0d1777936ac532.jpg.webp"
+                                    alt=""></div>
+                        <div class="wechat"><p>关注京师堂微信</p></div>
+                        <div class="dis">微信扫一扫关注京师堂服务号订阅更多促销优惠福利</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--搜索面板部分-->
+<div id="search_panel">
+    <div class="content">
+        <div class="left">
+            <h1 class="logo">
+                <a href="#">
+                    <img src="assets/images/logo.png" alt="京师堂">
+                </a>
+            </h1>
+        </div>
+        <div class="center">
+            <div class="search_form">
+                <form action="/search" method="get">
+                    <label for="type"></label>
+                    <select name="option" class="search_type" id="type">
+                        <option value="课程">课程</option>
+                        <option value="讲师">讲师</option>
+                    </select>
+                    <label>
+                        <input name="kw" type="text" placeholder="请输入关键词" class="keyword">
+                    </label>
+                    <label>
+                        <input type="submit" value="搜索" class="submit">
+                    </label>
+                </form>
+                <div class="hot_words">
+                    <ul>
+                        <% for(let i = 0; i < keyWords.length; i++) {
+                            let keyWord = keyWords[i];
+                        %>
+                        <li><a href="/<%=keyWord.type%>?kw=<%= keyWord.keyword %>"><%= keyWord.keyword %></a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav">
+                <ul>
+                    <% for(var i = 0; i < indexMenus.length ; i++) {
+                        let menu = indexMenus[i]
+                    %>
+                    <li>
+                        <a href=<%= menu.url %> class=<%= current === menu.url ? "active" : "" %>><%= menu.title %></a>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <img src="assets/images/wuxinliantong.jpg" alt="五新联通">
+        </div>
+    </div>
+</div>
+
+<div class="bk"></div>
+
+<!--导航面板部分- LinZiyong coding -->
+<div id="nav_panel">
+    <div class="left">
+        <div class="nav_coursers">
+            <h3 class="h3">课程导航</h3>
+            <ul id="items_course">
+                <% for(let i = 0; i < navMenusCourses.length ; i++) {
+                    navMenu = navMenusCourses[i]
+                %>
+                <li class="up">
+                    <a href="javascript:void(0);"><%= navMenu.category_name %></a>
+                    <span class="iconfont to_right">&#xe63c;</span>
+
+                    <div class="detail">
+                        <div class="title"><%= navMenu.category_name %></div>
+                        <ul>
+                            <li>
+                                <span class="iconfont spacer">&#xe605;</span>
+                                <a href="/courses?c1=<%= navMenu.id %>">不限</a>
+                            </li>
+                            <% for(let j = 0; j < navMenu.children.length ; j++) {
+                                child_navMenu = navMenu.children[j]
+                            %>
+                            <li>
+                                <span class="iconfont spacer">&#xe605;</span>
+                                <a href="/courses?c1=<%= navMenu.id %>&c2=<%= child_navMenu.id %>"><%= child_navMenu.category_name %></a>
+                            </li>
+                            <%
+                            } %>
+                        </ul>
+                    </div>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="nav_teachers">
+            <h3 class="h3">讲师导航</h3>
+            <ul id="items_teacher">
+                <% for(var i = 0; i < navMenusTeachers.length ; i++) {
+                    navMenu = navMenusTeachers[i];
+                %>
+                <li class="down">
+                    <a href="javascript:void(0);"><%= navMenu.category_name %></a>
+                    <span class="iconfont to_right">&#xe63c;</span>
+
+                    <div class="detail">
+                        <div class="title"><%= navMenu.category_name %></div>
+                        <ul>
+                            <li class="down">
+                                <span class="iconfont spacer">&#xe605;</span>
+                                <a href="/teachers?c1=<%= navMenu.id %>">不限</a>
+                            </li>
+                            <% for(var j = 0; j < navMenu.children.length; j++) {
+                                child_navMenu = navMenu.children[j];
+                            %>
+                            <li>
+                                <span class="iconfont spacer">&#xe605;</span>
+                                <a href="/teachers?c1=<%= navMenu.id %>&c2=<%= child_navMenu.id %>"><%= child_navMenu.category_name %></a>
+                            </li>
+                            <%
+                            } %>
+                        </ul>
+                    </div>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+        <ul>
+            <li class="img">
+                <img id="nav_img" src="" alt="">
+            </li>
+        </ul>
+        <div id="move_left">
+            &lt;
+        </div>
+        <div id="move_right">
+            &gt;
+        </div>
+        <ul class="indicator">
+            <% for(let i = 0; i < navCourses.length ; i++) {
+                let navCourse = navCourses[i];
+                // console.log(navCourse.focus_img)
+            %>
+            <li onmouseover="displayOver(this)" index=<%= navCourse.id %>>
+                <img src="<%= navCourse.focus_img %>" style="display:none" alt="">
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</div>
+
+<div class="shadow-down"></div>
+
+<!--精品课程部分-->
+<div id="courses">
+    <div class="title">
+        <span class="main_title">精品课程</span>
+        <span class="more">
+            <a class="iconfont more_right" href="courses">查看更多&#xe63c;</a>
+          </span>
+    </div>
+    <div class="content">
+        <ul>
+            <% for(let i = 0; i < excellentCourses.length ; i++) {
+                let excellentCourse = excellentCourses[i];
+            %>
+            <li>
+                <a href="/detail_course/<%= excellentCourse.id %>" class="picture">
+                    <img src="<%= excellentCourse.course_img %>" alt="">
+                </a>
+                <a href="/detail_course/<%= excellentCourse.id %>" class="name"><%= excellentCourse.course_title %></a>
+                <p>
+                    <span class="iconfont icon_course fl">&#xe538;</span>
+                    <span class="text fl"><%= excellentCourse.teacher_name %></span>
+                    <span class="text fr"><%= excellentCourse.course_hour %>课时</span>
+                    <span class="iconfont icon_course fr">&#xe621;</span>
+                </p>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</div>
+
+<div class="shadow-down" style=""></div>
+
+<!--推荐讲师部分-->
+<div id="teachers">
+    <div class="title">
+        <span class="main_title">推荐讲师</span>
+        <span class="more">
+            <a class="iconfont more_right" href="teachers">查看更多&#xe63c;</a>
+          </span>
+    </div>
+    <div class="content">
+        <ul>
+            <% for(let i = 0; i < starTeachers.length ; i++) {
+                let starTeacher = starTeachers[i]
+            %>
+            <li>
+                <a href="./detail_teacher/<%= starTeacher.id %>" class="picture">
+                    <img src="<%= starTeacher.teacher_avatar %>" alt="">
+                </a>
+                <a href="" class="name">
+                    <%= starTeacher.teacher_name %>
+                </a>
+                <div class="divider"></div>
+                <p>
+                    <span class="text"><%= starTeacher.teacher_intro %></span>
+                </p>
+            </li>
+            <%
+            } %>
+        </ul>
+    </div>
+</div>
+
+<!--热点新闻部分-->
+<div id="news">
+    <div class="title">
+        <span class="main_title">热点新闻</span>
+        <span class="more">
+            <a class="iconfont more_right" href="/news">查看更多&#xe63c;</a>
+          </span>
+    </div>
+    <div class="content">
+        <div class="left">
+            <ul>
+                <% for (let i = 0; i < (latestNews.length >= 5 ? 5 : latestNews.length); i++) { %>
+                    <li>
+                        <a href="/detail_news/<%= latestNews[i].id %>">
+                            <%= latestNews[i].news_title %>
+                        </a>
+                        <span class="news_time"><%= latestNews[i].news_time %></span>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="right">
+            <ul>
+                <% for (let i = 5; i < latestNews.length ; i++) { %>
+                    <li>
+                        <a href="/detail_news/<%= latestNews[i].id %>">
+                            <%= latestNews[i].news_title %>
+                        </a>
+                        <span class="news_time"><%= latestNews[i].news_time %></span>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--底部-->
+<div id="bottom">
+    <ul>
+        <li><a href="#">贡献名单</a></li>
+        <li><a href="#">联系我们</a></li>
+        <li><a href="#">友情链接</a></li>
+        <li><a href="#">帮助中心</a></li>
+    </ul>
+    <span class="copyright">Copyright © 2019 中国联通北京分公司. All Rights Reserved.</span>
+</div>
+
+<!--nav_panel JS部分代码-->
+<script src="js/index.js"></script>
+</body>
+</html>

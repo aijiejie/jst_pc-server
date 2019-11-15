@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/courses.css">
+    <link rel="stylesheet" href="/css/iconfont.css">
+    <title>京师堂|课程</title>
+</head>
+<body>
+<!--快捷菜单部分-->
+<div id="shortcut">
+    <div class="content">
+        <ul>
+            <li class="fl">欢迎来到&nbsp;&nbsp;北京联通</li>
+            <li class="spacer"></li>
+            <li>京师堂</li>
+            <li class="mobile fr">手机京师堂
+                <div class="mobile_pane">
+                    <div class="mobile_pane_1">
+                        <ul>
+                            <li><img
+                                        src="https://img12.360buyimg.com/img/jfs/t1/67481/15/565/28110/5cec9234E71c47244/dc4cf353fd96922e.png.webp"
+                                        alt="" class="code"></li>
+                            <li><a href="#">手机京师堂</a></li>
+                            <li><p>新人专享大礼包</p></li>
+                            <li class="sys" id="iphone"><a href="#">&nbsp;</a></li>
+                            <li class="sys" id="an">&nbsp;</li>
+                            <li class="sys" id="pad">&nbsp;</li>
+                        </ul>
+                    </div>
+                    <div class="mobile_pane_2">
+                        <div class="code1"><img
+                                    src="https://img12.360buyimg.com/img/jfs/t1/65354/19/579/11346/5cec9240E3d8146ad/cf0d1777936ac532.jpg.webp"
+                                    alt=""></div>
+                        <div class="wechat"><p>关注京师堂微信</p></div>
+                        <div class="dis">微信扫一扫关注京师堂服务号订阅更多促销优惠福利</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--菜单部分-->
+<div id="menu">
+    <h1 class="logo">
+        <a href="">
+            <img src="/assets/images/logo.png" alt="">
+        </a>
+    </h1>
+    <ul>
+        <% for (var i = 0; i < menus.length; i++) { %>
+            <% if (menus[i].url === current){ %>
+                <li><a href="<%= menus[i].url %>" class="recommend"><%= menus[i].title %></a></li>
+            <% } else { %>
+                <li><a href="<%= menus[i].url %>"><%= menus[i].title %></a></li>
+        <% }} %>
+    </ul>
+    <div class="search_box">
+        <form method="get">
+            <label>
+                <input type="hidden" value="<%= currentC1 %>" name="c1">
+                <input type="hidden" value="<%= currentC2 %>" name="c2">
+                <input type="text" value="" id="target" placeholder="前端" name="kw">
+                <input type="submit" class="iconfont" id="search" value="&#xe60c;">
+            </label>
+        </form>
+    </div>
+</div>
+<!--顶部简介部分-->
+<div id="top_intro"></div>
+<!--导航部分-->
+<div id="nav_panel">
+    <div class="first_level">
+        <div class="left">
+            <span class="iconfont icon-fenlei1"></span>
+            <span class="category">分类：</span>
+        </div>
+        <div class="right">
+            <div class="content">
+                <ul>
+                    <li class="<%= currentC1 == 0 ? 'active' : '' %>"><a href="/courses?c1=0">全部</a></li>
+                    <% for(let i = 0; i < types.length; i++) {
+                        let type = types[i];
+                    if (parseInt(type.parent_id) === 0) { %>
+                        <li class="<%= currentC1 == type.id ? 'active' : '' %>">
+                            <a href="/courses?c1=<%= type.id %>"><%= type.category_name %></a>
+                        </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="second_level">
+        <ul>
+            <li class="<%= currentC2 == 0 ? 'active' : '' %>"><a href="/courses?c1=<%= currentC1 %>&c2=0">不限</a></li>
+            <% for(let i = 0; i < resultsChildren.length; i++) {
+                let type = resultsChildren[i];
+            %>
+            <li class="<%= currentC2 == type.id ? 'active' : '' %>">
+                <a href="/courses?c1=<%= currentC1 %>&c2=<%= type.id %>"><%= type.category_name %></a>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</div>
+<!--课程部分-->
+<div id="courses">
+    <div class="content">
+        <ul>
+            <% for (let i = 0; i < coursesPage.length; i++) {
+                let course = coursesPage[i] %>
+            <li>
+                <div class="left">
+                    <a href="/detail_course/<%= course.id %>">
+                        <img src="<%= course.course_img %>" alt="">
+                    </a>
+                </div>
+                <div class="center">
+                    <h3 class="name">
+                        <a href="/detail_course/<%= course.id %>"><%= course.course_title %></a>
+                    </h3>
+                    <p>
+                        简介：<%= course.course_intro %>
+                    </p>
+                </div>
+                <div class="right">
+                    <a href="/detail_course/<%= course.id %>">
+                        <button class="btn">查看详情</button>
+                    </a>
+                </div>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</div>
+<!--分页部分-->
+<div id="paging">
+    <div class="content">
+        <span>共<%= coursesCount %>条数据</span>
+        <a href="/courses?kw=<%= kw %>&page=<%= currentPage - 1 <= 0 ? 1 : currentPage - 1 %>">
+            <button class="distance btn">&lt;</button>
+        </a>
+
+        <% if (pagesCount < 6){ %>
+            <% for(let i = 1; i <= pagesCount; i++) { %>
+                <a href="/courses?kw=<%= kw %>&page=<%= i %>">
+                    <button class="btn <%= i === currentPage ? "active" : "" %>"><%= i %></button>
+                </a>
+            <% } %>
+        <% } else {
+        if (currentPage <= 3) {
+        for (let j = 1; j <= 4 ; j++) { %>
+            <a href="/courses?kw=<%= kw %>&page=<%= j %>">
+                <button class="btn <%= j === currentPage ? "active" : "" %>"><%= j %></button>
+            </a>
+        <% } %>
+        <span>...</span>
+        <a href="/courses?kw=<%= kw %>&page=<%= pagesCount %>">
+            <button class="btn <%= pagesCount === currentPage ? "active" : "" %>"><%= pagesCount %></button>
+        </a>
+        <% } else if (currentPage >= pagesCount - 2) { %>
+            <a href="/courses?kw=<%= kw %>&page=<%= 1 %>">
+                <button class="btn <%= 1 === currentPage ? "active" : "" %>">1</button>
+            </a>
+            <span>...</span>
+            <% for(let j = pagesCount - 3; j <= pagesCount; j++) { %>
+                <a href="/courses?kw=<%= kw %>&page=<%= j %>">
+                    <button class="btn <%= j === currentPage ? "active" : "" %>"><%= j %></button>
+                </a>
+            <% } %>
+        <% } else { %>
+            <a href="/courses?kw=<%= kw %>&page=<%= 1 %>">
+                <button class="btn <%= 1 === currentPage ? "active" : "" %>">1</button>
+            </a>
+            <span>...</span>
+            <% for(let j = currentPage - 1; j <= currentPage + 1; j++) { %>
+                <a href="/courses?kw=<%= kw %>&page=<%= j %>">
+                    <button class="btn <%= j === currentPage ? "active" : "" %>"><%= j %></button>
+                </a>
+            <% } %>
+            <span>...</span>
+            <a href="/courses?kw=<%= kw %>&page=<%= pagesCount %>">
+                <button class="btn <%= pagesCount === currentPage ? "active" : "" %>"><%= pagesCount %></button>
+            </a>
+        <% } %>
+        <% } %>
+
+        <a href="/courses/?kw=<%= kw %>&page=<%= currentPage + 1 > pagesCount ? pagesCount : currentPage + 1 %>">
+            <button class="btn">&gt;</button>
+        </a>
+        <span class="distance">到</span>
+        <form method="get" id="user_page">
+            <label>
+                <input type="hidden" name="kw">
+                <input type="text" name="page" id="number">
+            </label>
+            <span>页</span>
+            <label>
+                <input type="submit" class="btn distance" value="GO!">
+            </label>
+        </form>
+    </div>
+</div>
+<!--底部-->
+<div id="bottom">
+    <ul>
+        <li><a href="#">贡献名单</a></li>
+        <li><a href="#">联系我们</a></li>
+        <li><a href="#">友情链接</a></li>
+        <li><a href="#">帮助中心</a></li>
+    </ul>
+    <span class="copyright">Copyright © 2019 中国联通北京分公司. All Rights Reserved.</span>
+</div>
+
+<script src="js/courses.js"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+@global_color: #e1251b;
+//版心
+.bx() {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+//顶部简介部分
+#top_intro {
+  background: url(../assets/images/banner_list.png) no-repeat;
+  background-size: cover;
+  height: 70px;
+  box-shadow: 0 0 15px #999;
+}
+
+//导航部分
+#nav_panel {
+  .bx;
+  //height: 80px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 0 15px #999;
+  border-radius: 10px;
+  margin-top: -30px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .first_level {
+    height: 50px;
+    width: 100%;
+    //background-color: green;
+    display: flex;
+    position: relative;
+
+    .left {
+      width: 70px;
+      height: 100%;
+      float: left;
+      font-size: 16px;
+      //background-color: yellow;
+
+      .icon-fenlei1 {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 8px;
+      }
+
+      .category {
+        color: #333;
+        font-weight: 400;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 28px;
+      }
+    }
+
+    .right {
+      height: 100%;
+      flex: 1;
+      float: right;
+
+      .content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        ul {
+          height: 32px;
+
+          li {
+            float: left;
+            white-space: nowrap;
+            margin: 0 10px;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            padding: 0 3px;
+            transition: all .3s;
+
+            &:hover,
+            &.active {
+              border: 1px solid #ca0c16;
+              color: #ca0c16;
+              background: #fff7f6;
+
+              a {
+                color: #ca0c16;
+              }
+            }
+
+            a {
+              color: #666;
+              font-size: 16px;
+              line-height: 20px;
+              display: inline-block;
+              padding: 5px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .second_level {
+    //height: 30px;
+    //width: 86%;
+    //background-color: cyan;
+    overflow: hidden;
+    margin-top: 10px;
+    display: none;
+
+    ul {
+      margin-left: 12px;
+      li {
+        float: left;
+        //white-space: nowrap;
+        margin: 0 12px 10px 0;
+        box-sizing: border-box;
+
+        height: 36px;
+        line-height: 36px;
+        font-size: 16px;
+        transition: all .3s;
+
+        &:hover,
+        &.active {
+          a {
+            color: @global_color;
+            font-weight: 700;
+          }
+        }
+
+        a {
+          color: #666;
+          font-size: 15px;
+          display: inline-block;
+          //background-color: rgba(0, 0, 0, .5);
+          width: 42px;
+          cursor: pointer;
+          float: left;
+          //margin-right: 12px;
+          padding: 0 18px;
+          line-height: 36px;
+        }
+      }
+    }
+  }
+}
+
+//课程部分
+#courses {
+  .bx;
+
+  .content {
+    //height: 900px;
+    margin-top: 24px;
+
+    ul {
+      width: 100%;
+
+      li {
+        height: 150px;
+        background-color: #fff;
+        border-radius: 8px;
+        border: 1px solid #e8eaec;
+        padding: 10px;
+        margin-bottom: 15px;
+        //transition: all .2s ease-in-out;
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+
+        &:hover {
+          box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+          border-color: #eee;
+        }
+
+        .left {
+          width: 180px;
+          height: 100%;
+          //background-color: green;
+          float: left;
+
+          img {
+            width: 180px;
+            height: 130px;
+            //vertical-align: middle;
+            border-radius: 2px;
+          }
+        }
+
+        .center {
+          margin-left: 14px;
+          flex: 1;
+          position: relative;
+
+          h3 {
+            margin-top: 6px;
+
+            a {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              word-break: break-all;
+              margin: 10px 0 0 12px;
+              font-size: 18px;
+              font-weight: bold;
+              color: #666;
+              box-sizing: border-box;
+            }
+          }
+
+          p {
+            position: absolute;
+            left: 12px;
+            top: 36px;
+            width: 666px;
+            box-sizing: border-box;
+            font-size: 15px;
+            line-height: 26px;
+            color: #555;
+            display: block;
+          }
+        }
+
+        .right {
+          width: 200px;
+          height: 100%;
+          //background-color: red;
+          float: right;
+
+          &:hover {
+            opacity: .6;
+          }
+
+          .btn {
+            width: 162px;
+            height: 48px;
+            font-size: 18px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 400;
+            background-color: #19be6b;
+            border-radius: 4px;
+            border: 0;
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+}

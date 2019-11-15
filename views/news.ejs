@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/news.css">
+    <link rel="stylesheet" href="/css/iconfont.css">
+    <title>京师堂|新闻</title>
+</head>
+<body>
+<!--快捷菜单部分-->
+<div id="shortcut">
+    <div class="content">
+        <ul>
+            <li class="fl">欢迎来到&nbsp;&nbsp;北京联通</li>
+            <li class="spacer"></li>
+            <li>京师堂</li>
+            <li class="mobile fr">手机京师堂
+                <div class="mobile_pane">
+                    <div class="mobile_pane_1">
+                        <ul>
+                            <li><img
+                                        src="https://img12.360buyimg.com/img/jfs/t1/67481/15/565/28110/5cec9234E71c47244/dc4cf353fd96922e.png.webp"
+                                        alt="" class="code"></li>
+                            <li><a href="#">手机京师堂</a></li>
+                            <li><p>新人专享大礼包</p></li>
+                            <li class="sys" id="iphone"><a href="#">&nbsp;</a></li>
+                            <li class="sys" id="an">&nbsp;</li>
+                            <li class="sys" id="pad">&nbsp;</li>
+                        </ul>
+                    </div>
+                    <div class="mobile_pane_2">
+                        <div class="code1"><img
+                                    src="https://img12.360buyimg.com/img/jfs/t1/65354/19/579/11346/5cec9240E3d8146ad/cf0d1777936ac532.jpg.webp"
+                                    alt=""></div>
+                        <div class="wechat"><p>关注京师堂微信</p></div>
+                        <div class="dis">微信扫一扫关注京师堂服务号订阅更多促销优惠福利</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--菜单部分-->
+<div id="menu">
+    <h1 class="logo">
+        <a href="javascript:void(0);">
+            <img src="/assets/images/logo.png" alt="">
+        </a>
+    </h1>
+    <ul>
+        <% for(let i = 0; i < menus.length ; i++) {
+            let menu = menus[i]; %>
+        <li><a href="<%= menu.url %>" class="<%= menu.url === current ? "recommend" : "" %>"><%= menu.title %></a></li>
+        <% } %>
+    </ul>
+    <div class="search_box">
+        <form method="get">
+            <label>
+                <input type="text" value="" id="target" placeholder="海南" name="kw">
+                <input type="submit" class="iconfont" id="search" value="&#xe60c;">
+            </label>
+        </form>
+    </div>
+</div>
+<!--顶部简介部分-->
+<div id="top_intro"></div>
+<!--导航部分-->
+<div id="nav_panel">
+    <div class="left">
+        <span class="iconfont icon-fenlei1"></span>
+        <span class="category">新闻中心</span>
+    </div>
+</div>
+<!--新闻部分-->
+<div id="news">
+    <div class="content">
+        <ul>
+            <% for(let i = 0; i < newsPage.length; i++) {
+                let news = newsPage[i] %>
+            <li>
+                <a href="/detail_news/<%= news.id %>" class="picture">
+                    <img src="<%= news.news_img %>" alt="">
+                </a>
+                <div class="detail">
+                    <h2>
+                        <a href="/detail_news/<%= news.id %>" target="_blank"><%= news.news_title %></a>
+                    </h2>
+                    <a href="/detail_news/<%= news.id %>" target="_blank" class="txt">
+                        <%- news.news_intro %>
+                    </a>
+                    <span class="news_time"><%= news.news_time %></span>
+                </div>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</div>
+<!--分页部分-->
+<div id="paging">
+    <div class="content">
+        <span>共<%= newsCount %>条数据</span>
+        <a href="/news?kw=<%= kw %>&page=<%= currentPage - 1 <= 0 ? 1 : currentPage - 1 %>">
+            <button class="distance btn">&lt;</button>
+        </a>
+
+        <% if (pagesCount < 6){ %>
+            <% for(let i = 1; i <= pagesCount; i++) { %>
+                <a href="/news?kw=<%= kw %>&page=<%= i %>">
+                    <button class="btn <%= i === currentPage ? "active" : "" %>"><%= i %></button>
+                </a>
+            <% } %>
+        <% } else {
+                if (currentPage <= 3) {
+                    for (let j = 1; j <= 4 ; j++) { %>
+                        <a href="/news?kw=<%= kw %>&page=<%= j %>">
+                            <button class="btn <%= j === currentPage ? "active" : "" %>"><%= j %></button>
+                        </a>
+                    <% } %>
+                    <span>...</span>
+                    <a href="/news?kw=<%= kw %>&page=<%= pagesCount %>">
+                        <button class="btn <%= pagesCount === currentPage ? "active" : "" %>"><%= pagesCount %></button>
+                    </a>
+                <% } else if (currentPage >= pagesCount - 2) { %>
+                    <a href="/news?kw=<%= kw %>&page=<%= 1 %>">
+                        <button class="btn <%= 1 === currentPage ? "active" : "" %>">1</button>
+                    </a>
+                    <span>...</span>
+                    <% for(let j = pagesCount - 3; j <= pagesCount; j++) { %>
+                        <a href="/news?kw=<%= kw %>&page=<%= j %>">
+                            <button class="btn <%= j === currentPage ? "active" : "" %>"><%= j %></button>
+                        </a>
+                    <% } %>
+                <% } else { %>
+                    <a href="/news?kw=<%= kw %>&page=<%= 1 %>">
+                        <button class="btn <%= 1 === currentPage ? "active" : "" %>">1</button>
+                    </a>
+                    <span>...</span>
+                    <% for(let j = currentPage - 1; j <= currentPage + 1; j++) { %>
+                        <a href="/news?kw=<%= kw %>&page=<%= j %>">
+                            <button class="btn <%= j === currentPage ? "active" : "" %>"><%= j %></button>
+                        </a>
+                    <% } %>
+                    <span>...</span>
+                    <a href="/news?kw=<%= kw %>&page=<%= pagesCount %>">
+                        <button class="btn <%= pagesCount === currentPage ? "active" : "" %>"><%= pagesCount %></button>
+                    </a>
+                <% } %>
+        <% } %>
+
+        <a href="/news/?kw=<%= kw %>&page=<%= currentPage + 1 > pagesCount ? pagesCount : currentPage + 1 %>">
+            <button class="btn">&gt;</button>
+        </a>
+        <span class="distance">到</span>
+        <form method="get" id="user_page">
+            <label>
+                <input type="hidden" name="kw">
+                <input type="text" name="page" id="number">
+            </label>
+            <span>页</span>
+            <label>
+                <input type="submit" class="btn distance" value="GO!">
+            </label>
+        </form>
+    </div>
+</div>
+<!--底部-->
+<div id="bottom">
+    <ul>
+        <li><a href="#">贡献名单</a></li>
+        <li><a href="#">联系我们</a></li>
+        <li><a href="#">友情链接</a></li>
+        <li><a href="#">帮助中心</a></li>
+    </ul>
+    <span class="copyright">Copyright © 2019 中国联通北京分公司. All Rights Reserved.</span>
+</div>
+</body>
+</html>

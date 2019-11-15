@@ -1,0 +1,309 @@
+//版心
+@global_color: #e1251b;
+.bx() {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+//顶部简介部分
+#top_intro {
+  background: url(../assets/images/banner_list.png) no-repeat;
+  background-size: cover;
+  height: 70px;
+  box-shadow: 0 0 15px #999;
+}
+
+//导航部分
+#nav_panel {
+  .bx;
+  //height: 55px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 0 15px #999;
+  border-radius: 10px;
+  margin-top: -30px;
+  //display: flex;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .first_level {
+    height: 50px;
+    width: 100%;
+    //background-color: green;
+    display: flex;
+    position: relative;
+
+    .left {
+      width: 70px;
+      height: 100%;
+      float: left;
+      font-size: 16px;
+      //background-color: yellow;
+
+      .icon-fenlei1 {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 8px;
+      }
+
+      .category {
+        color: #333;
+        font-weight: 400;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 28px;
+      }
+    }
+
+    .right {
+      height: 100%;
+      flex: 1;
+      float: right;
+
+      .content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        ul.subject {
+          height: 32px;
+          float: left;
+
+          li {
+            float: left;
+            white-space: nowrap;
+            margin: 0 10px;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            padding: 0 3px;
+            transition: all .3s;
+
+            &:hover,
+            &.active {
+              border: 1px solid #ca0c16;
+              color: #ca0c16;
+              background: #fff7f6;
+
+              a {
+                color: #ca0c16;
+              }
+            }
+
+            a {
+              color: #666;
+              font-size: 16px;
+              line-height: 20px;
+              display: inline-block;
+              padding: 5px;
+              cursor: pointer;
+            }
+          }
+        }
+
+        ul.start {
+          float: left;
+
+          li {
+            float: left;
+            white-space: nowrap;
+            margin: 0 10px;
+            padding: 0 3px;
+            transition: all .3s;
+
+            a {
+              color: #666;
+              font-size: 16px;
+              line-height: 20px;
+              display: inline-block;
+              padding: 5px;
+              cursor: pointer;
+            }
+
+            &:hover,
+            &.active-star {
+              a {
+                color: @global_color;
+                font-weight: 700;
+              }
+            }
+
+            .spacer {
+              color: #dddddd;
+              font-size: 14px;
+              line-height: 30px;
+              padding-right: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .second_level {
+    //height: 30px;
+    //width: 86%;
+    //background-color: cyan;
+    overflow: hidden;
+    margin-top: 10px;
+    display: none;
+
+    ul {
+      margin-left: 12px;
+
+      li {
+        float: left;
+        //white-space: nowrap;
+        margin: 0 12px 10px 0;
+        box-sizing: border-box;
+
+        height: 36px;
+        line-height: 36px;
+        font-size: 16px;
+        transition: all .3s;
+
+        &:hover,
+        &.active {
+          a {
+            color: @global_color;
+            font-weight: 700;
+          }
+        }
+
+        a {
+          color: #666;
+          font-size: 15px;
+          display: inline-block;
+          //background-color: cyan;
+          width: 42px;
+          cursor: pointer;
+          float: left;
+          //margin-right: 12px;
+          padding: 0 18px;
+          line-height: 36px;
+        }
+      }
+    }
+  }
+}
+
+//讲师列表
+#teachers {
+  .bx;
+  width: 1220px;
+  margin-top: 20px;
+
+  ul {
+    overflow: hidden;
+
+    li {
+      background-color: #fff;
+      width: 590px;
+      height: 160px;
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      //margin-bottom:20px;
+      margin: 10px;
+      float: left;
+      box-shadow: 0 2px 4px 0 rgba(7, 17, 27, 0.06);
+      cursor: pointer;
+
+      div {
+        overflow: hidden;
+
+        img {
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          float: left;
+          margin: 0 10px;
+
+          &:hover {
+            opacity: .8;
+          }
+        }
+
+        .name {
+          font-size: 20px;
+          font-weight: bolder;
+          margin: 10px;
+          //float: left;
+          display: inline-block;
+
+          .title_star,
+          .title_normal {
+            width: 65px;
+            margin: 0 0 0 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+            //float: left;
+            display: inline-block;
+            padding: 5px;
+          }
+
+          .title_star {
+            background-color: rgba(150, 0, 0, 0.2);
+            color: #e1251b;
+          }
+
+          .title_normal {
+            background-color: #7b7b7b;
+            color: #f4f4f4;
+          }
+        }
+
+        .class_nums {
+          display: inline-block;
+          width: 100px;
+          margin-left: 10px;
+          color: #555;
+          font-size: 14px;
+        }
+
+        .home {
+          color: lightskyblue;
+          border: 2px solid lightskyblue;
+          border-radius: 10px;
+          font-size: 14px;
+          font-weight: 600;
+          padding: 10px;
+          float: right;
+          margin-right: 20px;
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          a {
+            color: lightskyblue;
+          }
+        }
+      }
+
+      .divider {
+        background: @global_color;
+        height: 1px;
+        box-sizing: border-box;
+        margin: 12px 18px;
+        //box-shadow: 0 0 4px 0 rgba(0,0,0,.1);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+        //box-shadow: 0 2px 8px 0 rgba(7, 17, 27, 0.06);
+      }
+
+      .intro {
+        text-indent: 2em;
+        font-size: 14px;
+        height: 20px;
+
+      }
+
+      &:hover {
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .1) !important;
+      }
+    }
+  }
+}

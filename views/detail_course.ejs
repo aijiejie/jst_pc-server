@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">-->
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/iconfont.css">
+    <link rel="stylesheet" href="/css/detail_course.css">
+    <title>京师堂|课程详情</title>
+</head>
+<body>
+<!--快捷菜单部分-->
+<div id="shortcut">
+    <div class="content">
+        <ul>
+            <li class="fl">欢迎来到&nbsp;&nbsp;北京联通</li>
+            <li class="spacer"></li>
+            <li>京师堂</li>
+            <li class="mobile fr">手机京师堂
+                <div class="mobile_pane">
+                    <div class="mobile_pane_1">
+                        <ul>
+                            <li><img
+                                        src="https://img12.360buyimg.com/img/jfs/t1/67481/15/565/28110/5cec9234E71c47244/dc4cf353fd96922e.png.webp"
+                                        alt="" class="code"></li>
+                            <li><a href="#">手机京师堂</a></li>
+                            <li><p>新人专享大礼包</p></li>
+                            <li class="sys" id="iphone"><a href="#">&nbsp;</a></li>
+                            <li class="sys" id="an">&nbsp;</li>
+                            <li class="sys" id="pad">&nbsp;</li>
+                        </ul>
+                    </div>
+                    <div class="mobile_pane_2">
+                        <div class="code1"><img
+                                    src="https://img12.360buyimg.com/img/jfs/t1/65354/19/579/11346/5cec9240E3d8146ad/cf0d1777936ac532.jpg.webp"
+                                    alt=""></div>
+                        <div class="wechat"><p>关注京师堂微信</p></div>
+                        <div class="dis">微信扫一扫关注京师堂服务号订阅更多促销优惠福利</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--菜单部分-->
+<div id="menu">
+    <h1 class="logo">
+        <a href="">
+            <img src="/assets/images/logo.png" alt="">
+        </a>
+    </h1>
+
+    <ul>
+        <% for (let i = 0; i < menus.length; i++) { %>
+            <li><a href="<%= menus[i].url %>"><%= menus[i].title %></a></li>
+        <% } %>
+    </ul>
+    <div class="search_box">
+        <label for="target"></label>
+        <input type="text" value="" id="target" placeholder="javascript">
+        <span class="iconfont" id="search">&#xe60c;</span>
+    </div>
+</div>
+
+<!--导航部分-->
+<div id="nav_panel">
+    <div class="top">
+        <p>
+            <a href="/courses">课程列表</a>
+            <span class="iconfont icon-mianbaoxie"></span>
+            <a href="#"><%= courses.course_title %></a>
+        </p>
+    </div>
+    <div class="content">
+        <div class="left">
+            <img src="<%= courses.course_img %>" alt="">
+        </div>
+        <div class="right">
+            <h2 class="title"><%= courses.course_title %></h2>
+            <span class="subtitle">820人学过</span>
+            <span class="subtitle">讲师：<%= courses.teacher_name %></span>
+        </div>
+        <a class="btn" href="/detail_teacher/<%= courses.teacher_id %>">讲师主页</a>
+    </div>
+    <div class="footer">
+        <ul>
+            <li class="active" id="intro_menu">
+                <a href="#">课程介绍</a>
+            </li>
+            <li id="outline_menu">
+                <a href="#">课程大纲</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--课程部分-->
+<div id="course">
+    <div class="left">
+        <div id="intro_panel">
+            <dl>
+                <dt>课程目标</dt>
+                <dd><%= courses.course_goals %></dd>
+                <dt>适用人群</dt>
+                <dd><%= courses.course_for_people %></dd>
+                <dt>课程简介</dt>
+                <dd id="content_code"><p><img src=<%= courses.content_img %> alt=""></p></dd>
+            </dl>
+        </div>
+        <div id="outline_panel">
+            <ul>
+                <% for(var i = 0; i < dg.length ; i++) {
+                    let thisDg = dg[i]; %>
+
+                <li><%= thisDg.title %></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+        <div class="teacher">
+            <p class="intro_title">讲师介绍</p>
+            <a href="" target="_blank">
+                <img alt="王顺子" src=<%= courses.teacher_avatar %>>
+            </a>
+            <div class="name">
+                <h2><a href="" target="_blank">王顺子</a></h2>
+            </div>
+            <p class="intro_content"><%= courses.teacher_intro %></p>
+        </div>
+
+        <div class="evaluate">
+            <p class="intro_title">课程打分</p>
+            <div id="star">
+                <span>点击星星就能打分</span>
+                <ul>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
+                <span></span>
+            </div>
+            <form method="post" role="form" action="/detail_course/1">
+                <label>
+                    <textarea id="content" name="content" placeholder="请输入内容后,点击留言"></textarea>
+                </label>
+                <input type="submit" value="提交评论" class="submit">
+            </form>
+        </div>
+
+        <div class="comments">
+            <p class="intro_title">学员评价</p>
+            <% if(comments.length === 0){ %>
+                <p class="first">此课程暂时还没有评论，快来添加第一条评论吧！</p>
+            <% } %>
+            <% for(let i = 0; i < (comments.length > 4 ? 4 : comments.length); i++) {
+                let thisComment = comments[i]; %>
+            <div class="student">
+
+                <div class="top">
+                    <img src="/assets/images/noavatar_middle.gif" alt="">
+                    <span>匿名</span>
+                </div>
+                <div class="score">
+                    <img src="/assets/images/<%= thisComment.score %>score.png" alt="">
+                    <span><%= thisComment.score %>分</span>
+                </div>
+                <div class="time">
+                    <% function p(s) {
+                        return s < 10 ? '0' + s : s;
+                    };
+                        const d = new Date(comments[i].insert_time);
+                        const resDate = d.getFullYear() + '-' + p((d.getMonth() + 1)) + '-' + p(d.getDate());
+                        const resTime = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+                    %>
+                    <span>发布时间：<%= resDate %> &nbsp; <%= resTime %></span>
+                    <!--                    <span>发布时间：2019-09-09 12:12:12</span>-->
+                </div>
+                <div class="content">
+                    <p> <%= thisComment.comment %></p>
+                    <% if(comments.length === 0){ %>
+                        <p>此课程暂时还没有评论，快来添加第一条评论吧！</p>
+                    <% } %>
+                </div>
+
+            </div>
+            <% } %>
+            <p class="page">
+                <a href="/detail_course/<%= courseID %>?page=1">
+                    <button>首页</button>
+                </a>
+                <% for (let i = 1; i <= pageN; i++) { %>
+                    <a href="/detail_course/<%= courseID %>?page=<%= i %>">
+                        <button class=<%= page == i ? "currentPage" : "" %>><%= i %></button>
+                    </a>
+                <% } %>
+                <a href="/detail_course/<%= courseID %>?page=<%= page + 1 >= pageN ? pageN : page + 1 %>">
+                    <button>下一页</button>
+                </a>
+
+                <a href="/detail_course/<%= courseID %>?page=<%= pageN %>">
+                    <button>末页</button>
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!--底部-->
+<div id="bottom">
+    <ul>
+        <li><a href="#">贡献名单</a></li>
+        <li><a href="#">联系我们</a></li>
+        <li><a href="#">友情链接</a></li>
+        <li><a href="#">帮助中心</a></li>
+    </ul>
+    <span class="copyright">Copyright © 2019 中国联通北京分公司. All Rights Reserved.</span>
+</div>
+<script src="/js/detail_course.js"></script>
+</body>
+</html>

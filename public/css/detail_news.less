@@ -1,0 +1,90 @@
+@global_color: #e1251b;
+//版心
+.bx() {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+//面包屑导航部分
+#nav_panel {
+  .bx;
+  margin-top: 10px;
+  height: 35px;
+  background-color: #e3e6ed;
+  border-radius: 10px;
+  p {
+    margin-left: 10px;
+    line-height: 35px;
+
+    a {
+      color: #818181;
+      font-size: 14px;
+      cursor: pointer;
+      &.active{
+        color: @global_color;
+      }
+
+      &:hover {
+        color: @global_color;
+      }
+    }
+    .icon-mianbaoxie {
+      color: #818181;
+      font-size: 14px;
+    }
+  }
+}
+
+//新闻部分
+#news {
+  .bx;
+  background-color: #fff;
+  border-radius: 10px;
+
+  .title {
+    //height: 120px;
+    //background-color: green;
+    border-bottom: #d3d3d3 1px solid;
+    margin: 15px 20px 0;
+    padding-top: 6px;
+
+    h1 {
+      margin: 5px auto 10px;
+      color: #222;
+      font: bold 38px/150% "Microsoft Yahei";
+      text-align: left;
+    }
+
+    .news_time {
+      height: 36px;
+      //background-color: red;
+      line-height: 44px;
+      width: 100%;
+      color: #666;
+      font-size: 14px;
+      float: left;
+      word-break: break-all;
+      margin-bottom: 10px;
+    }
+  }
+
+  .content {
+    //height: 800px;
+    //background-color: green;
+    padding-bottom: 12px;
+    margin: 15px 20px 0;
+    text-align: left;
+
+    p {
+      line-height: 180%;
+      margin: 25px 0;
+      font-size: 18px;
+      text-indent: 2em;
+    }
+
+    img {
+      max-width: 660px;
+      height: auto;
+    }
+  }
+}

@@ -1,0 +1,389 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../assets/fonts/iconMoon/icomoon.eot?w8e6tt');
+  src: url('../assets/fonts/iconMoon/icomoon.eot?w8e6tt#iefix') format('embedded-opentype'),
+  url('../assets/fonts/iconMoon/icomoon.ttf?w8e6tt') format('truetype'),
+  url('../assets/fonts/iconMoon/icomoon.woff?w8e6tt') format('woff'),
+  url('../assets/fonts/iconMoon/icomoon.svg?w8e6tt#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon', serif !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+//阿里字体图标
+.ali-iconfont {
+  font-family: "iconfont", serif !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #818181;
+  font-size: 14px;
+}
+
+//全局样式
+body {
+  background-color: rgb(244, 244, 244);
+  //height: 2000px;
+}
+
+a {
+  text-decoration: none;
+}
+
+@global_color: #e1251b;
+//版心
+.bx() {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+//教师简介
+#top_teacher {
+  background: url(../assets/images/banner_tearcher_detail.png) center center no-repeat;
+  height: 189px;
+  position: relative;
+
+  img {
+    width: 108px;
+    //height: 70px;
+    //margin: 49px 300px;
+    border-radius: 50%;
+    left: 150px;
+    top: 49px;
+    position: relative;
+    //border:2px solid darkslategrey;
+    box-sizing: border-box;
+  }
+
+  #top_title {
+    left: 287px;
+    top: 58px;
+    font-size: 20px;
+    font-family: "Microsoft YaHei UI", serif;
+    color: #FFFFFF;
+    position: absolute;
+  }
+
+  #top_shortTitle {
+    width: 60%;
+    left: 287px;
+    top:91px;
+    line-height: 18px;
+    font-size: 14px;
+    color: #FFFFFF;
+    position: absolute;
+  }
+
+}
+
+//面包屑导航
+#nav_panel {
+  //height: 500px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(7, 17, 27, 0.06);
+  .top {
+    height: 35px;
+    background-color: #e3e6ed;
+
+    p {
+      margin-left: 10px;
+      line-height: 35px;
+      a {
+        color: #818181;
+        font-size: 14px;
+        &:hover {
+          color: @global_color;
+        }
+      }
+
+      .icon-mianbaoxie {
+        color: #818181;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+#teacher_introduction {
+  .bx;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(7, 17, 27, 0.06);
+  height: 400px;
+  margin-top: 28px;
+  border-radius: 10px;
+  #intro_title {
+    //background-color: green;
+    height: 36px;
+    padding-top: 8px;
+    padding-left: 8px;
+    .main_title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #2e2e2e;
+      line-height: 36px;
+      float: left;
+    }
+  }
+
+  .center {
+    height: 365px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    color: #424242;
+    line-height: 3em;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    .left {
+      width: 300px;
+      height: 100%;
+      //background-color: red;
+      margin-right: 20px;
+      position: relative;
+      img {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        //float: left;
+        ////margin-left: 20px;
+        //margin-top: 10px;
+        //vertical-align: middle;
+        //margin-right: 70px;
+      }
+    }
+
+    .right {
+      height: 100%;
+      //background-color: darkcyan;
+      flex: 1;
+      position: relative;
+      h4 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-top: 72px;
+      }
+      & span.title_star{
+        position:absolute;
+        top:82px;
+        left:71px;
+        width: 77px;
+        line-height: 28px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        display: inline-block;
+        background-color: rgba(150, 0, 0, 0.2);
+        color: #e1251b;
+      }
+      & span.detail_intro {
+        display: block;
+        margin-top: 10px;
+        width: 856px;
+        height: 200px;
+        font-size: 15px;
+        line-height:25px;
+        color: #999;
+        word-break: break-word;
+      }
+    }
+  }
+}
+
+//分隔线
+.shadow-down {
+  .bx;
+  background: #e3e6ed;
+  height: 1px;
+  box-sizing: border-box;
+  //box-shadow: 0 0 4px 0 rgba(0,0,0,.1);
+  //box-shadow: 0 1px 6px rgba(0,0,0,.2);
+  box-shadow: 0 2px 8px 0 rgba(7, 17, 27, 0.06);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+//推荐课程列表
+#courses {
+  .bx;
+  //height: 690px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(7, 17, 27, 0.06);
+  border-radius: 10px;
+
+  > .content {
+    .bx();
+
+    .title {
+      margin: 24px auto;
+      height: 36px;
+      padding-top: 8px;
+      padding-left: 8px;
+      //background-color: green;
+
+      .main_title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #2e2e2e;
+        line-height: 36px;
+        float: left;
+      }
+
+      .more {
+        float: right;
+
+        a {
+          font-size: 14px;
+          line-height: 36px;
+          color: #4e667b;
+
+          .more_right {
+            padding-right: 4px;
+          }
+
+          &:hover {
+            color: @global_color;
+          }
+        }
+      }
+    }
+
+    .list {
+      min-height: 580px;
+      padding: 10px 8px 0;
+
+      ul {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 10px 0px;
+        justify-content: flex-start;
+        /*    align-content: space-between;
+            align-items: center;*/
+        overflow: hidden;
+        li {
+          width: 225px;
+          height: 253px;
+          box-sizing: border-box;
+          border-radius: 8px;
+          margin-bottom: 53px;
+          margin-right: 5px;
+          margin-left: 6px;
+          background-color: #f4f4f4;
+          position: relative;
+          &:hover {
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+            border-color: #eee;
+          }
+
+          a {
+            display: block;
+            color: #666;
+            height: 100%;
+            img {
+              width: 225px;
+              height: 124px;
+              border-top-right-radius: 8px;
+              border-top-left-radius: 8px;
+            }
+
+            div.course_title {
+              width: 100%;
+              line-height: 24px;
+              font-weight: bold;
+              font-size: 15px;
+              padding: 0 10px;
+              box-sizing: border-box;
+              margin-top: 3px;
+            }
+
+            div.ins {
+              width: 100%;
+              height: 36px;
+              line-height: 18px;
+              font-size: 14px;
+              padding: 0 10px;
+              box-sizing: border-box;
+              margin-top: 3px;
+              overflow: hidden;
+              word-wrap: break-word;
+            }
+            div.score {
+              width: 100%;
+              line-height: 25px;
+              font-size: 14px;
+              margin-top: 3px;
+              padding: 0 0 0 10px;
+              display: block;
+              box-sizing: border-box;
+              .box {
+                width: 57px;
+                height: 25px;
+                position: relative;
+                display: inline-block;
+                i.star_gray {
+                  position: absolute;
+                  left: 0px;
+                  top: 8px;
+                  z-index: 10;
+                  display: inline-block;
+                  width: 57px;
+                  height: 25px;
+                  background: url("http://103.126.100.113/assets/images/layout_css_sprites3.png") no-repeat -91px -58px;
+                }
+                i.star_yel {
+                  position: absolute;
+                  left: 0px;
+                  top: 8px;
+                  z-index: 11;
+                  display: inline-block;
+                  width: 57px;
+                  height:25px;
+                  //background-color: red;
+                  background: url(http://103.126.100.113/assets/images/layout_css_sprites3.png) no-repeat -9px -158px;
+                  //border: 1px solid green;
+                }
+              }
+              .point {
+                position: absolute;
+                display: inline-block;
+                //width: 40px;
+                line-height: 25px;
+                top:195px;
+                left:68px;
+                margin-left: 5px;
+              }
+            }
+            div.price {
+              margin-top: 3px;
+              width: 100%;
+              line-height: 18px;
+              padding: 0 10px;
+              font-size: 14px;
+              box-sizing: border-box;
+            }
+          }
+        }
+      }
+    }
+  }
+}
